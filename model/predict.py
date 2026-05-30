@@ -1,27 +1,46 @@
+import pandas as pd
 import joblib
 
-model = joblib.load('model/semaforo_model.pkl')
+# ==========================================
+# CARGAR MODELO
+# ==========================================
+
+model = joblib.load("model/semaforo_model.pkl")
+
+# ==========================================
+# NUEVO DATO
+# ==========================================
+nuevo_dato = pd.DataFrame([{
+    "CarCount": 20,
+    "BikeCount": 5,
+    "BusCount": 3,
+    "TruckCount": 2,
+    "Hour": 10,
+    "DayNumber": 3
+}])
+
+# PREDICCIÓN
+resultado = model.predict(nuevo_dato)[0]
 
 
+print("Nivel de tráfico:", resultado)
 
-# 'CarCount', 'BikeCount', 'BusCount', 'TruckCount', 'Total'
-nuevo_trafico = [[120, 20, 10, 5, 155]]
-resultado = model.predict(nuevo_trafico)[0]
+# TIEMPO DE VERDE PARA DESCONGESTIÓN
 
-print("Nivel de tráfico: ", resultado)
+if resultado.lower() == "low":
+    tiempo_verde = 20   # poco tráfico
 
-# Decisión semafórica
+elif resultado.lower() == "normal":
+    tiempo_verde = 40   # tráfico medio
 
-if resultado == 'low':
-    green_time = 30
+elif resultado.lower() == "high":
+    tiempo_verde = 80   # tráfico alto
 
-elif resultado == 'normal':
-    green_time = 60
+else:
+    tiempo_verde = 30   # default
 
-elif resultado == 'high':
-    green_time = 90
+# SALIDA FINAL
 
-else: 
-    green_time = 120
-
-print("Tiempo de luz verde recomendado: ", green_time)
+print("\nOPTIMIZACIÓN DE SEMÁFORO")
+print("===========================")
+print("Tiempo de luz verde:", tiempo_verde, "segundos")
