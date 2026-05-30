@@ -23,7 +23,7 @@ nuevo_dato = pd.DataFrame([{
 resultado = model.predict(nuevo_dato)[0]
 
 
-print("Nivel de tráfico:", resultado)
+print("\nNivel de tráfico:", resultado)
 
 # TIEMPO DE VERDE PARA DESCONGESTIÓN
 
