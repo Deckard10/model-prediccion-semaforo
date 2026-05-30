@@ -1,0 +1,17 @@
+RESULTADOS DEL MODELO
+=====================
+
+Accuracy: 94.97%
+
+Reporte de Clasificación
+-------------------------
+              precision    recall  f1-score   support
+
+       heavy       0.91      0.98      0.94       127
+        high       0.89      0.79      0.84        63
+         low       0.98      0.97      0.98        66
+      normal       0.97      0.96      0.97       340
+
+    accuracy                           0.95       596
+   macro avg       0.94      0.93      0.93       596
+weighted avg       0.95      0.95      0.95       596
