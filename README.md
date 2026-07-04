@@ -31,4 +31,4 @@ Una vez activado el entorno virtual, instala las librerías:
 pip install -r requirements.txt
 
 5. Ejecución
-python pred
+python predict.py

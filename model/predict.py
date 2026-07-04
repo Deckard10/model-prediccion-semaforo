@@ -5,7 +5,7 @@ import joblib
 # CARGAR MODELO
 # ==========================================
 
-model = joblib.load("model/semaforo_model.pkl")
+model = joblib.load("semaforo_model.pkl")
 
 # ==========================================
 # NUEVO DATO

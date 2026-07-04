@@ -8,7 +8,8 @@ from sklearn.metrics import (
     accuracy_score,
     classification_report,
     confusion_matrix,
-    ConfusionMatrixDisplay
+    ConfusionMatrixDisplay,
+    precision_recall_fscore_support
 )
 
 # ==========================================
@@ -114,6 +115,26 @@ print("RESULTADOS DEL MODELO")
 print("==============================")
 
 print(f"\nAccuracy: {accuracy:.2%}")
+
+precision, recall, f1, support = precision_recall_fscore_support(
+    y_test,
+    y_pred,
+    labels=model.classes_
+)
+
+results_table = pd.DataFrame({
+    "Clase": model.classes_,
+    "Precision": precision,
+    "Recall": recall,
+    "F1-Score": f1,
+    "Support": support
+})
+
+print("\nTABLA DE RESULTADOS\n")
+print(results_table)
+
+# guardar tabla
+results_table.to_csv("model/tabla_resultados_ieee.csv", index=False)
 
 # ==========================================
 # REPORTE DE CLASIFICACIÓN
